@@ -6,7 +6,7 @@
 /*   By: tayki <tayki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 09:42:49 by tayki             #+#    #+#             */
-/*   Updated: 2025/02/24 14:33:15 by tayki            ###   ########.fr       */
+/*   Updated: 2025/02/24 16:14:49 by tayki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	fill_matrix(int *z_line, char *line, fdf *data)
 		free(nums[i]);
 		i++;
 	}
-	// Free remaining strings if any
 	while (nums[i])
 	{
 		free(nums[i]);
