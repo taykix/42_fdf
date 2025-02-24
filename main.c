@@ -6,7 +6,7 @@
 /*   By: tayki <tayki@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 09:40:39 by tayki             #+#    #+#             */
-/*   Updated: 2025/02/24 16:25:14 by tayki            ###   ########.fr       */
+/*   Updated: 2025/02/24 16:38:36 by tayki            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ int	deal_key(int key, fdf *data)
 {
 	ft_printf("%d\n", key);
 	if (key == 65363)
-		data->x_shift += 10;
+		data->x_shift += 50;
 	if (key == 65361)
-		data->x_shift -= 10;
+		data->x_shift -= 50;
 	if (key == 65362)
-		data->y_shift -= 10;
+		data->y_shift -= 50;
 	if (key == 65364)
-		data->y_shift += 10;
+		data->y_shift += 50;
 	if (key == 65307)
 		free_and_close(data);
 	mlx_clear_window(data->mlx_ptr, data->win_ptr);
@@ -76,13 +76,13 @@ int	free_and_close(fdf *data)
 
 int	main(int argc, char **argv)
 {
-	fdf *data;
-	int i;
-	int j;
+	fdf		*data;
+	int		i;
+	int		j;
+
 	data = (fdf *)malloc(sizeof(fdf));
 	if (!data)
 		return (1);
-
 	read_file(argv[1], data);
 	if (!data->z_matrix || data->height <= 0 || data->width <= 0)
 	{
@@ -92,21 +92,11 @@ int	main(int argc, char **argv)
 	data->zoom = 20;
 	data->mlx_ptr = mlx_init();
 	data->win_ptr = mlx_new_window(data->mlx_ptr, 1000, 1000, "FDF");
-
 	draw(data);
-
 	mlx_key_hook(data->win_ptr, deal_key, data);
 	mlx_mouse_hook(data->win_ptr, mouse_handler, data);
+	mlx_hook(data->win_ptr, 17, 0, free_and_close, data);
 	mlx_loop(data->mlx_ptr);
-
-	i = 0;
-	while (i < data->height)
-	{
-		free(data->z_matrix[i]);
-		i++;
-	}
-	free(data->z_matrix);
-	free(data);
-
+	free_and_close(data);
 	return (0);
 }

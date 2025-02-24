@@ -5,7 +5,9 @@ MLX_DIR = mlx_linux
 MLX_LIB = -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
 SRC = main.c \
 	read_file.c \
+	read_utils.c \
 	draw.c \
+	bresenham.c \
 	libft1/libft/get_next_line/get_next_line.c \
 	libft1/libft/get_next_line/get_next_line_utils.c
 OBJ = $(SRC:.c=.o)
