@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bresenham.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tayki <tayki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tkarakay <tkarakay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 16:50:50 by tayki             #+#    #+#             */
-/*   Updated: 2025/02/24 16:51:02 by tayki            ###   ########.fr       */
+/*   Updated: 2025/02/27 17:29:51 by tkarakay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	isometric(float *x, float *y, int z)
 	*y = (previous_x + *y) * sin(ISO_ANGLE) - z;
 }
 
-static void	init_points(t_point *start, t_point *end, fdf *data, int *z)
+static void	init_points(t_point *start, t_point *end, t_fdf *data, int *z)
 {
 	z[0] = data->z_matrix[(int)start->y][(int)start->x];
 	z[1] = data->z_matrix[(int)end->y][(int)end->x];
@@ -40,7 +40,7 @@ static void	init_points(t_point *start, t_point *end, fdf *data, int *z)
 		data->color = 0xFFFFFF;
 }
 
-static void	apply_transforms(t_point *start, t_point *end, fdf *data, int *z)
+static void	apply_transforms(t_point *start, t_point *end, t_fdf *data, int *z)
 {
 	isometric(&start->x, &start->y, z[0]);
 	isometric(&end->x, &end->y, z[1]);
@@ -61,7 +61,7 @@ static void	calculate_steps(t_point start, t_point end, float *steps)
 	steps[1] /= max;
 }
 
-void	bresenham(t_point start, t_point end, fdf *data)
+void	bresenham(t_point start, t_point end, t_fdf *data)
 {
 	float	steps[2];
 	int		z[2];

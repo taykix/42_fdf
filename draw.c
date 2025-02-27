@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tayki <tayki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tkarakay <tkarakay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 13:59:23 by tayki             #+#    #+#             */
-/*   Updated: 2025/02/24 16:51:25 by tayki            ###   ########.fr       */
+/*   Updated: 2025/02/27 17:29:57 by tkarakay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	draw(fdf *data)
+void	draw(t_fdf *data)
 {
 	t_point	current;
 	t_point	next;

@@ -6,7 +6,7 @@
 /*   By: tkarakay <tkarakay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 09:19:03 by tayki             #+#    #+#             */
-/*   Updated: 2025/02/27 17:18:27 by tkarakay         ###   ########.fr       */
+/*   Updated: 2025/02/27 17:30:18 by tkarakay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_point
 	float	y;
 }			t_point;
 
-typedef struct
+typedef struct s_fdf
 {
 	int		width;
 	int		height;
@@ -35,17 +35,17 @@ typedef struct
 	int		color;
 	void	*mlx_ptr;
 	void	*win_ptr;
-}			fdf;
+}			t_fdf;
 
-void		free_matrix(fdf *data);
-void		read_file(char *file_name, fdf *data);
-void		fill_matrix(int *z_line, char *line, fdf *data);
+void		free_matrix(t_fdf *data);
+void		read_file(char *file_name, t_fdf *data);
+void		fill_matrix(int *z_line, char *line, t_fdf *data);
 int			get_width(char *file_name);
 int			get_height(char *file_name);
-void		bresenham(t_point start, t_point end, fdf *data);
-void		draw(fdf *data);
-int			free_and_close(fdf *data);
-void		handle_mlx_error(fdf *data);
-void		handle_error(fdf *data);
+void		bresenham(t_point start, t_point end, t_fdf *data);
+void		draw(t_fdf *data);
+int			free_and_close(t_fdf *data);
+void		handle_mlx_error(t_fdf *data);
+void		handle_error(t_fdf *data);
 
 #endif

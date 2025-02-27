@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tayki <tayki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tkarakay <tkarakay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 09:42:49 by tayki             #+#    #+#             */
-/*   Updated: 2025/02/24 16:43:51 by tayki            ###   ########.fr       */
+/*   Updated: 2025/02/27 17:30:37 by tkarakay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	fill_matrix(int *z_line, char *line, fdf *data)
+void	fill_matrix(int *z_line, char *line, t_fdf *data)
 {
 	char	**nums;
 	int		i;
@@ -35,7 +35,7 @@ void	fill_matrix(int *z_line, char *line, fdf *data)
 	free(nums);
 }
 
-static void	free_matrix_error(fdf *data, int i)
+static void	free_matrix_error(t_fdf *data, int i)
 {
 	while (--i >= 0)
 		free(data->z_matrix[i]);
@@ -43,7 +43,7 @@ static void	free_matrix_error(fdf *data, int i)
 	data->z_matrix = NULL;
 }
 
-static int	allocate_matrix(fdf *data)
+static int	allocate_matrix(t_fdf *data)
 {
 	int	i;
 
@@ -64,7 +64,7 @@ static int	allocate_matrix(fdf *data)
 	return (1);
 }
 
-static void	fill_from_file(char *file_name, fdf *data)
+static void	fill_from_file(char *file_name, t_fdf *data)
 {
 	int		fd;
 	char	*line;
@@ -85,7 +85,7 @@ static void	fill_from_file(char *file_name, fdf *data)
 	close(fd);
 }
 
-void	read_file(char *file_name, fdf *data)
+void	read_file(char *file_name, t_fdf *data)
 {
 	data->height = get_height(file_name);
 	data->width = get_width(file_name);

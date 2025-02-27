@@ -6,13 +6,13 @@
 /*   By: tkarakay <tkarakay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 09:40:39 by tayki             #+#    #+#             */
-/*   Updated: 2025/02/27 17:24:44 by tkarakay         ###   ########.fr       */
+/*   Updated: 2025/02/27 17:30:29 by tkarakay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	deal_key(int key, fdf *data)
+int	deal_key(int key, t_fdf *data)
 {
 	ft_printf("%d\n", key);
 	if (key == 65363)
@@ -30,7 +30,7 @@ int	deal_key(int key, fdf *data)
 	return (0);
 }
 
-int	mouse_handler(int button, int x, int y, fdf *data)
+int	mouse_handler(int button, int x, int y, t_fdf *data)
 {
 	(void)x;
 	(void)y;
@@ -49,7 +49,7 @@ int	mouse_handler(int button, int x, int y, fdf *data)
 	return (0);
 }
 
-int	free_and_close(fdf *data)
+int	free_and_close(t_fdf *data)
 {
 	int	i;
 
@@ -74,7 +74,7 @@ int	free_and_close(fdf *data)
 	return (0);
 }
 
-void	initialize_data(fdf *data)
+void	initialize_data(t_fdf *data)
 {
 	data->z_matrix = NULL;
 	data->height = 0;
@@ -88,14 +88,11 @@ void	initialize_data(fdf *data)
 
 int	main(int argc, char **argv)
 {
-	fdf	*data;
+	t_fdf	*data;
 
 	if (argc != 2)
-	{
-		ft_printf("Usage: %s <filename>\n", argv[0]);
 		return (1);
-	}
-	data = (fdf *)malloc(sizeof(fdf));
+	data = (t_fdf *)malloc(sizeof(t_fdf));
 	if (!data)
 		return (1);
 	initialize_data(data);
