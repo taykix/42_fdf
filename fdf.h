@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tayki <tayki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tkarakay <tkarakay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 09:19:03 by tayki             #+#    #+#             */
-/*   Updated: 2025/02/24 16:03:08 by tayki            ###   ########.fr       */
+/*   Updated: 2025/02/27 17:18:27 by tkarakay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,7 @@ int			get_height(char *file_name);
 void		bresenham(t_point start, t_point end, fdf *data);
 void		draw(fdf *data);
 int			free_and_close(fdf *data);
+void		handle_mlx_error(fdf *data);
+void		handle_error(fdf *data);
 
 #endif

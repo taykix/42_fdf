@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tayki <tayki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tkarakay <tkarakay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 09:40:39 by tayki             #+#    #+#             */
-/*   Updated: 2025/02/24 16:38:36 by tayki            ###   ########.fr       */
+/*   Updated: 2025/02/27 17:24:44 by tkarakay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,24 +74,40 @@ int	free_and_close(fdf *data)
 	return (0);
 }
 
+void	initialize_data(fdf *data)
+{
+	data->z_matrix = NULL;
+	data->height = 0;
+	data->width = 0;
+	data->zoom = 20;
+	data->x_shift = 0;
+	data->y_shift = 0;
+	data->mlx_ptr = NULL;
+	data->win_ptr = NULL;
+}
+
 int	main(int argc, char **argv)
 {
-	fdf		*data;
-	int		i;
-	int		j;
+	fdf	*data;
 
+	if (argc != 2)
+	{
+		ft_printf("Usage: %s <filename>\n", argv[0]);
+		return (1);
+	}
 	data = (fdf *)malloc(sizeof(fdf));
 	if (!data)
 		return (1);
+	initialize_data(data);
 	read_file(argv[1], data);
 	if (!data->z_matrix || data->height <= 0 || data->width <= 0)
-	{
-		free(data);
-		return (1);
-	}
-	data->zoom = 20;
+		handle_error(data);
 	data->mlx_ptr = mlx_init();
-	data->win_ptr = mlx_new_window(data->mlx_ptr, 1000, 1000, "FDF");
+	if (!data->mlx_ptr)
+		handle_error(data);
+	data->win_ptr = mlx_new_window(data->mlx_ptr, 3000, 3000, "FDF");
+	if (!data->win_ptr)
+		handle_mlx_error(data);
 	draw(data);
 	mlx_key_hook(data->win_ptr, deal_key, data);
 	mlx_mouse_hook(data->win_ptr, mouse_handler, data);

@@ -2,12 +2,13 @@ NAME = fdf
 CC = gcc
 CFLAGS = -I/usr/include -Imlx_linux -O3
 MLX_DIR = mlx_linux
-MLX_LIB = -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
+MLX_LIB = -L$(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz
 SRC = main.c \
 	read_file.c \
 	read_utils.c \
 	draw.c \
 	bresenham.c \
+	handle_error.c \
 	libft1/libft/get_next_line/get_next_line.c \
 	libft1/libft/get_next_line/get_next_line_utils.c
 OBJ = $(SRC:.c=.o)
