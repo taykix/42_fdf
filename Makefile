@@ -1,5 +1,5 @@
 NAME = fdf
-CC = gcc
+CC = cc
 CFLAGS = -I/usr/include -Imlx_linux -O3
 MLX_DIR = mlx_linux
 MLX_LIB = -L$(MLX_DIR) -lmlx -L/usr/lib -lXext -lX11 -lm -lz
@@ -9,6 +9,7 @@ SRC = main.c \
 	draw.c \
 	bresenham.c \
 	handle_error.c \
+	handle_map.c \
 	libft1/libft/get_next_line/get_next_line.c \
 	libft1/libft/get_next_line/get_next_line_utils.c
 OBJ = $(SRC:.c=.o)

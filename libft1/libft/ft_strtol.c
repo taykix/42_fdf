@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtol.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tayki <tayki@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tkarakay <tkarakay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 18:24:08 by tayki             #+#    #+#             */
-/*   Updated: 2025/02/04 13:53:57 by tayki            ###   ########.fr       */
+/*   Updated: 2025/03/02 20:44:47 by tkarakay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,27 +28,25 @@ long	ft_power(int base, int exp)
 long int	ft_strtol(char *line)
 {
 	long int	rslt;
-	long int	*hexa;
-	int			cmp;
-	int			power;
+	int			sign;
+	int			i;
 
-	cmp = 0;
-	power = 0;
 	rslt = 0;
-	hexa = (long int *)malloc(sizeof(long int) * ft_strlen(line));
-	while (line[cmp])
+	sign = 1;
+	i = 0;
+	while (line[i] == ' ' || line[i] == '\t')
+		i++;
+	if (line[i] == '-')
 	{
-		if (line[cmp] >= 'A' && line[cmp] <= 'F')
-			hexa[cmp] = line[cmp] + 10 - 'A';
-		else if (line[cmp] >= '0' && line[cmp] <= '9')
-			hexa[cmp] = line[cmp] - '0';
-		cmp++;
+		sign = -1;
+		i++;
 	}
-	while (--cmp >= 0)
+	else if (line[i] == '+')
+		i++;
+	while (line[i] >= '0' && line[i] <= '9')
 	{
-		rslt += hexa[cmp] * ft_power(16, power);
-		power++;
+		rslt = rslt * 10 + (line[i] - '0');
+		i++;
 	}
-	free(hexa);
-	return (rslt);
+	return (sign * rslt);
 }
