@@ -6,7 +6,7 @@
 /*   By: tkarakay <tkarakay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 17:17:59 by tkarakay          #+#    #+#             */
-/*   Updated: 2025/02/27 17:30:21 by tkarakay         ###   ########.fr       */
+/*   Updated: 2025/03/02 20:52:48 by tkarakay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,17 @@ void	handle_mlx_error(t_fdf *data)
 	}
 	free(data);
 	exit(1);
+}
+
+int	is_valid_fdf_file(const char *filename)
+{
+	size_t	len;
+
+	len = ft_strlen(filename);
+	if (len < 4 || ft_strncmp(filename + len - 4, ".fdf", 4) != 0)
+	{
+		ft_printf("Error: File must have .fdf extension\n");
+		return (0);
+	}
+	return (1);
 }

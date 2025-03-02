@@ -6,7 +6,7 @@
 /*   By: tkarakay <tkarakay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 09:40:39 by tayki             #+#    #+#             */
-/*   Updated: 2025/02/27 17:30:29 by tkarakay         ###   ########.fr       */
+/*   Updated: 2025/03/02 20:51:38 by tkarakay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ int	main(int argc, char **argv)
 	t_fdf	*data;
 
 	if (argc != 2)
+		return (1);
+	if (!is_valid_fdf_file(argv[1]))
 		return (1);
 	data = (t_fdf *)malloc(sizeof(t_fdf));
 	if (!data)
