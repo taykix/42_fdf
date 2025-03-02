@@ -6,7 +6,7 @@
 /*   By: tkarakay <tkarakay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 09:42:49 by tayki             #+#    #+#             */
-/*   Updated: 2025/02/27 17:30:37 by tkarakay         ###   ########.fr       */
+/*   Updated: 2025/03/02 15:26:24 by tkarakay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,11 @@ static void	fill_from_file(char *file_name, t_fdf *data)
 
 void	read_file(char *file_name, t_fdf *data)
 {
+	if (!validate_file(file_name))
+	{
+		ft_printf("Invalid file format\n");
+		exit(1);
+	}
 	data->height = get_height(file_name);
 	data->width = get_width(file_name);
 	if (!allocate_matrix(data))

@@ -9,6 +9,7 @@ SRC = main.c \
 	draw.c \
 	bresenham.c \
 	handle_error.c \
+	handle_map.c \
 	libft1/libft/get_next_line/get_next_line.c \
 	libft1/libft/get_next_line/get_next_line_utils.c
 OBJ = $(SRC:.c=.o)
