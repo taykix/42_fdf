@@ -6,7 +6,7 @@
 /*   By: tkarakay <tkarakay@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 09:19:03 by tayki             #+#    #+#             */
-/*   Updated: 2025/02/27 17:30:18 by tkarakay         ###   ########.fr       */
+/*   Updated: 2025/03/02 19:49:05 by tkarakay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ void		draw(t_fdf *data);
 int			free_and_close(t_fdf *data);
 void		handle_mlx_error(t_fdf *data);
 void		handle_error(t_fdf *data);
+int			validate_file(char *file_name);
 
 #endif
